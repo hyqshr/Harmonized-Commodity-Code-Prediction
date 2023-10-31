@@ -62,11 +62,17 @@ def find_alternate_code(description, code_keyword_map):
 
     return sorted_alternate
 
+def find_keywords(top5):
+    keywords = {}
+    print(top5)
+    for code in top5.keys():
+        keywords[code] = " ".join(" ".join(code_keyword_map[code]).split())
+    return keywords
+
 @app.get('/hs_code')
 async def get_code(description: str):
     if not description:
         raise HTTPException(status_code=400, detail="Description must be provided")
     
-    alternate_codes = find_alternate_code(description, code_keyword_map)
-    
-    return {"result": alternate_codes}
+    top5 = find_alternate_code(description, code_keyword_map)
+    return {"top5": top5, "keywords": find_keywords(top5)}
