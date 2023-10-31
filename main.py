@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import yake
 import json
 import re
+import pandas as pd
 
 kw_extractor = yake.KeywordExtractor()
 
@@ -20,6 +21,16 @@ app.add_middleware(
 with open('code_keyword_map.json', 'r') as file:
     code_keyword_map = json.load(file)
     
+# Load the CSV file
+df = pd.read_csv('HSCodeMap.csv')
+
+# Ensure that 'id' and 'text' columns are present
+if 'id' not in df.columns or 'text' not in df.columns:
+    raise ValueError("The CSV file must contain 'id' and 'text' columns")
+
+# Convert the DataFrame to a dictionary
+data_dict = pd.Series(df['text'].values, index=df['id']).to_dict()
+
 def jaccard_similarity(sentence1, sentence2):
     # Tokenize the sentences into words
     set1 = set(sentence1.split())
@@ -66,7 +77,7 @@ def find_keywords(top5):
     keywords = {}
     print(top5)
     for code in top5.keys():
-        keywords[code] = " ".join(" ".join(code_keyword_map[code]).split())
+        keywords[code] = data_dict[int(code)]
     return keywords
 
 @app.get('/hs_code')
