@@ -2,8 +2,11 @@
 
 Description
 -----------
-Harmonized Tariff Schedule (HTS) codes provide a systematic structure for the classification and taxation of products, enabling International trade worldwide. Customs experts assign HS codes to tens of thousands of products every day. This manual process of assigning codes is a time-consuming, tiresome, and error-prone task. So, we want to automate this process leveraging machine learning to reduce errors in the classification process and reduce manual effort. 
-To build this machine learning model, we are using 2021 updated US Imports data from the US Imports website  https://usimports.info/ , from where we crawled numerous product descriptions for each HS code. We are using YAKE, RAKE, and KeyBERT models to extract keywords from the data, which will be matched with the new product descriptions using Fuzzy String Matching to assign HS codes to new products. We will find the best-performing model using metrics such as accuracy, precision, recall, and F1 score. 
+Harmonized Tariff Schedule (HS-Code) codes provide a systematic structure for the classification and taxation of products. Customs experts assign HS codes to tens of thousands of products every day. This manual process of assigning codes is a time-consuming, tiresome, and error-prone task. 
+
+we crawled numerous US Imports data from the US Imports website  https://usimports.info/, we are using multiple models including **YAKE, RAKE, KeyBERT, ResNet** for HS-code prediction.
+
+![Alt text](image/result-table.png)
 
 Try it out
 -----------
@@ -25,4 +28,4 @@ Frontend (Next.js React) Github Repo: https://github.com/hyqshr/HS_Code_Nextjs
 
 Authors
 -----------
-Priyanka Padinam, Santosh Saranyan , Hwijong Im, Yiqiu Huang
+[Priyanka Padinam](https://github.com/priya1118), [Santosh Saranyan](https://github.com/santoshsaranyan) , [Hwijong Im](https://github.com/bellwood22), [Yiqiu Huang](https://github.com/hyqshr)
