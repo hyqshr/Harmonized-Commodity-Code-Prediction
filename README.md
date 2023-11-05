@@ -14,12 +14,6 @@ Try our lookup through web: https://hs-code-nextjs.vercel.app/
 
 ![Alt text](image/result.png)
 
-Currently we host our service on EC2 free tier which does not offer SSL by natural, so you will need to `allow insecure content` in the following tab:
-
-![Alt text](image/chrome-setting.png)
-
-![Alt text](image/allow-insecure.png)
-
 We will migrate our service to a better place soon.
 
 Frontend (Next.js React) Github Repo: https://github.com/hyqshr/HS_Code_Nextjs
